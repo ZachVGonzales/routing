@@ -1,7 +1,12 @@
 from graph.graph import create_graph
+import uvicorn
+from slm_hub.service import app
 
 
 if __name__ == "__main__":
+  # launch the SLM hub
+  uvicorn.run(app=app, host="0.0.0.0", port=8208)
+
   graph = create_graph()
   graph = graph.compile()
 
