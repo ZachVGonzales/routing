@@ -63,6 +63,6 @@ class CustomCrossEncoder(BaseCrossEncoder):
     super().__init__()  # Initialize BaseCrossEncoder
     self.model = CrossEncoder(name)  # Load the model
   
-  def score(self, query: str, document: Document) -> float:
+  def score(self, querry_doc_pairs: List[tuple[str, str]]) -> float:
     """Computes the relevance score for a single query-document pair."""
-    return self.model.predict([(query, document.page_content)])
+    return self.model.predict(querry_doc_pairs)

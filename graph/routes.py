@@ -3,14 +3,13 @@ Defines the functionality for nodes of the AI Agent's Graph
 """
 
 import requests
-import asyncio
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
 from semantic_router import Route
 from semantic_router.utils.function_call import get_schema
 
-async def analyze_objective(objective: str) -> str:
+def analyze_objective(objective: str) -> str:
     """Preforms an analysis of the provided objective.
 
     :param objective: The objective to perform an analysis on; should
@@ -21,7 +20,12 @@ async def analyze_objective(objective: str) -> str:
     :type objective: str
     :return: Analysis scores of the objective."""
     
-    response = await asyncio.to_thread(requests.post, "http://localhost:8208/predict", json={"model_name":"objective_analysis", "text":objective})
+    url = "http://localhost:8208/predict"
+    json={
+        "model_name": "objective_analysis",
+        "text": objective
+    }
+    response = requests.post(url, json=json)
     response = response.json()
     analysis = response["prediction"]
     return f"the objective scorded: {analysis}"

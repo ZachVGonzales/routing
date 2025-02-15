@@ -7,6 +7,8 @@ Config for AI Agent graph
 APP_HOME = Path(__file__).parent.parent
 
 class Config:
+  class Path:
+    APP_HOME = APP_HOME
 
   class Data:
     DATABASE = APP_HOME / "database"
