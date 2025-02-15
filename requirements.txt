@@ -15,6 +15,7 @@ dataclasses-json==0.6.7
 diskcache==5.6.3
 distro==1.9.0
 exceptiongroup==1.2.2
+faiss-gpu==1.7.2
 fastapi==0.115.8
 filelock==3.17.0
 frozenlist==1.5.0
